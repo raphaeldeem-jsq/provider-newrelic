@@ -1,6 +1,6 @@
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
 metadata:
-  name: upjet-provider-template
+  name: provider-provider-newrelic
 spec:
-  package: upbound/upjet-provider-template:v0.1.0
+  package: JuniperSquare/provider-provider-newrelic:v0.1.0

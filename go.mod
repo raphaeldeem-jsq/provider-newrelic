@@ -1,4 +1,4 @@
-module github.com/upbound/upjet-provider-template
+module github.com/JuniperSquare/provider-provider-newrelic
 
 go 1.19
 

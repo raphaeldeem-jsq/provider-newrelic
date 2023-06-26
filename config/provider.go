@@ -10,12 +10,12 @@ import (
 
 	ujconfig "github.com/upbound/upjet/pkg/config"
 
-	"github.com/upbound/upjet-provider-template/config/null"
+	"github.com/JuniperSquare/provider-provider-newrelic/config/null"
 )
 
 const (
-	resourcePrefix = "template"
-	modulePath     = "github.com/upbound/upjet-provider-template"
+	resourcePrefix = "provider-newrelic"
+	modulePath     = "github.com/JuniperSquare/provider-provider-newrelic"
 )
 
 //go:embed schema.json

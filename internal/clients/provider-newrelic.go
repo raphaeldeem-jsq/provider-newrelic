@@ -15,7 +15,7 @@ import (
 
 	"github.com/upbound/upjet/pkg/terraform"
 
-	"github.com/upbound/upjet-provider-template/apis/v1beta1"
+	"github.com/JuniperSquare/provider-provider-newrelic/apis/v1beta1"
 )
 
 const (
@@ -24,7 +24,17 @@ const (
 	errGetProviderConfig    = "cannot get referenced ProviderConfig"
 	errTrackUsage           = "cannot track ProviderConfig usage"
 	errExtractCredentials   = "cannot extract credentials"
-	errUnmarshalCredentials = "cannot unmarshal template credentials as JSON"
+	errUnmarshalCredentials = "cannot unmarshal provider-newrelic credentials as JSON"
+
+
+	// Provider arguments
+	accountId = "account_id"
+	apiKey = "api_key"
+	region = "region"
+	insecureSkipVerify = "insecure_skip_verify"
+	insightsInsertKey = "insights_insert_key"
+	cacertFile = "cacert_file"
+
 )
 
 // TerraformSetupBuilder builds Terraform a terraform.SetupFn function which
@@ -67,6 +77,25 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 			"username": creds["username"],
 			"password": creds["password"],
 		}*/
+		ps.Configuration = map[string]any{}
+		if v, ok := creds[accountId]; ok {
+			ps.Configuration[accountId] = v
+		}
+		if v, ok := creds[apiKey]; ok {
+			ps.Configuration[apiKey] = v
+		}
+		if v, ok := creds[region]; ok {
+			ps.Configuration[region] = v
+		}
+		if v, ok := creds[insecureSkipVerify]; ok {
+			ps.Configuration[insecureSkipVerify] = v
+		}
+		if v, ok := creds[insightsInsertKey]; ok {
+			ps.Configuration[insightsInsertKey] = v
+		}
+		if v, ok := creds[cacertFile]; ok {
+			ps.Configuration[cacertFile] = v
+		}
 		return ps, nil
 	}
 }
